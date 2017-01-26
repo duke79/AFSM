@@ -4,53 +4,28 @@ AFSM - Simple 'Finite State Machine in Java', built for Android.
 Example:
 ```java
 FSM.addStates(new String[]{
-                "Root","LoginPrompt","SearchResults"
+                "Root","SecondState"
         });
 
-new Transition("Root","","LoginPrompt")
+new Transition("Root","","SecondState")
         .setAction(new Action() {
             @Override
             public void run(Bundle data) {
-                setupLoginFragment();
-                setupVideoListFragment();
+                // Do something while going from Root to SecondState
+                // Control come here only if isGo returns true.
             }
         });
-
-new Transition("LoginPrompt","","SearchResults")
-        .setAction(new Action() {
-            @Override
-            public void run(Bundle data) {
-                String query = "";
-                if(data!=null)
-                    query = data.getString("query");
-                StartSearch(query);
-            }
-        });
-
-new Transition("SearchResults","","LoginPrompt")
-        .setAction(new Action() {
-            @Override
-            public void run(Bundle data) {
-                FragmentManager fm = getSupportFragmentManager();
-                FragmentTransaction transaction = fm.beginTransaction();
-
-                if (mLoginFragment != null)
-                    transaction.remove(mSearchResultsFragment);
-                transaction.add(R.id.LoginFragmentContainer, mLoginFragment);
-                transaction.add(R.id.VideoListFragmentContainer, mVideoListFragment);
-                transaction.commit();
-            }
-        })
         .setCondition(new Condition() {
             @Override
             public boolean isGo(Bundle data) {
-                if(data!=null) {
-                    if(data.getBoolean("backPressed"))
-                        return true;
-                }
-                return false;
+                // Put a condition to make this transition 'unique' for "Root -> SecondState"
+                boolean condition = ...
+                return condition;
             }
         });
-
-        FSM.transit(null);
+// Call transit to invoke a transition
+// Which transitition happpens, depends upon the "current state" of FSM and "condition check" for the transition.
+Bundle data = new Bundle();
+data.putString("key1","data1");
+FSM.transit(data);
 ````
