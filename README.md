@@ -1,7 +1,7 @@
 # AFSM
 AFSM - Simple 'Finite State Machine in Java', built for Android.
 
-Example:
+### Example:
 ```java
 FSM.addStates(new String[]{
                 "Root","SecondState"
@@ -30,3 +30,7 @@ Bundle data = new Bundle();
 data.putString("key1","data1");
 FSM.transit(data);
 ````
+
+### Usage
+
+Get [.aar release](https://github.com/duke79/AFSM/releases).
