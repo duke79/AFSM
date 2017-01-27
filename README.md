@@ -14,7 +14,7 @@ new Transition("Root","","SecondState")
                 // Do something while going from Root to SecondState
                 // Control comes here only if isGo returns true.
             }
-        });
+        }); // Condition is optional (unless there are more than one transitions from a single state)
         .setCondition(new Condition() {
             @Override
             public boolean isGo(Bundle data) {
