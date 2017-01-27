@@ -12,17 +12,18 @@ new Transition("Root","","SecondState")
             @Override
             public void run(Bundle data) {
                 // Do something while going from Root to SecondState
-                // Control come here only if isGo returns true.
+                // Control comes here only if isGo returns true.
             }
         });
         .setCondition(new Condition() {
             @Override
             public boolean isGo(Bundle data) {
-                // Put a condition to make this transition 'unique' for "Root -> SecondState"
+                // Put a condition to make this transition 'unique' from "Root"
                 boolean condition = ...
                 return condition;
             }
         });
+        
 // Call transit to invoke a transition
 // Which transitition happpens, depends upon the "current state" of FSM and "condition check" for the transition.
 Bundle data = new Bundle();
