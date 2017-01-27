@@ -1,4 +1,4 @@
-package com.baliyaan.android.FSM;
+package com.baliyaan.android.afsm;
 
 import android.os.Bundle;
 
