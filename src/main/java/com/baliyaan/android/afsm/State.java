@@ -1,7 +1,5 @@
 package com.baliyaan.android.afsm;
 
-import android.os.Bundle;
-
 import java.util.ArrayList;
 
 /**
@@ -28,7 +26,7 @@ public class State {
     /*
     * In that case of ambiguous transitions, only one of them will be considered.
      */
-    protected State transit(Bundle data) {
+    protected State transit(Object data) {
         State nextState = this;
         int nbrTransitions = mTransitions.size();
         for(int i=0;i<nbrTransitions;i++)

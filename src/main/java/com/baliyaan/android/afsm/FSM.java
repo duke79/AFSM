@@ -1,7 +1,5 @@
 package com.baliyaan.android.afsm;
 
-import android.os.Bundle;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -64,7 +62,7 @@ public class FSM {
     /*
     * In that case of ambiguous transitions, only one of them will be considered.
      */
-    public static FSM transit(Bundle data){
+    public static FSM transit(Object data){
         if(mCurrentState==null)return null;
         State state = mCurrentState.transit(data);
         if(state!=null)

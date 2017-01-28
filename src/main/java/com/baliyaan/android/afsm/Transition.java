@@ -1,7 +1,5 @@
 package com.baliyaan.android.afsm;
 
-import android.os.Bundle;
-
 public class Transition {
 
     private String mName;
@@ -24,7 +22,7 @@ public class Transition {
         FSM.getState(startStateName).addTransition(this);
     }
 
-    protected State tryTransition(final Bundle data) {
+    protected State tryTransition(final Object data) {
         if(mCondition==null || mCondition.isGo(data))
         {
             new Thread(new Runnable() {
